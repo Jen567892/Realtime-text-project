@@ -1,3 +1,8 @@
+nosex = 0;
+nosey = 0;
+rightWristX = 0;
+leftWristX = 0;
+difference = 0;
 function setup(){
     canvas = createCanvas(400,400)
     canvas.center();
@@ -11,6 +16,11 @@ function setup(){
 
 function draw(){
 background("#A3EDFF");
+fill("#A54CED")
+//square(nosex,nosey,difference)
+textSize(difference)
+text("Jenny Kitty", nosex, nosey)
+
 }
 
 function modelLoaded(){
@@ -20,5 +30,12 @@ function modelLoaded(){
 function gotPose(results){
 if(results.length > 0){
     console.log(results);
+    nosex =  results[0].pose.nose.x ;
+    nosey =  results[0].pose.nose.y ;
+    rightWristX = results[0].pose.rightWrist.x;
+    leftWristX = results[0].pose.leftWrist.x;
+    difference = leftWristX-rightWristX;
 }
 }
+
+
